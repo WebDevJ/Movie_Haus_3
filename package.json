@@ -28,9 +28,8 @@
     "path": "^0.12.7",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
+    "request": "^2.69.0",
     "watchify": "^3.7.0"
   },
-  "devDependencies": {
-    "morgan": "^1.7.0"
-  }
+  "devDependencies": {}
 }
