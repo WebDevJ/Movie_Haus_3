@@ -33,4 +33,3 @@ movies.route('/search/:t')
   })
 
 module.exports = movies;
-```

@@ -1,14 +1,15 @@
 'use strict'
+
 require('dotenv').config();
-var express    = require('express');
-var logger     = require('morgan');
-var bodyParser = require('body-parser');
-var path       = require('path');
-var request    = require('request');
+const express    = require('express');
+const logger     = require('morgan');
+const bodyParser = require('body-parser');
+const path       = require('path');
+const request    = require('request');
 
-var app        = express();
+const app        = express();
 
-// var config = {
+// const config = {
 //     host: process.env.DB_HOST,
 //     port: process.env.DB_PORT,
 //     database: process.env.DB_NAME,
@@ -32,5 +33,13 @@ app.route('/')
 
 app.use('/movies', require(path.join(__dirname, '/routes/movies')));
 
-var port = process.env.PORT || 3000;
-var server = app.listen(port);
+
+const port = process.env.PORT || 3000;
+const server = app.listen(port, function( ){
+     console.log('http://127.0.0.1:'+port+'/');
+});
+//
+// const port = process.env.PORT || 3000;
+// const server = app.listen(port);
+//
+//
