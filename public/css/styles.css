@@ -1,0 +1,19 @@
+aside {
+  float: left;
+  width: 42%;
+  margin: .5em;
+  padding: .5em;
+}
+
+.search {
+  clear: both;
+  padding: 1em;
+}
+
+.searchbtn {
+  margin-left: 2em;
+}
+
+.results {
+  padding: 1em;
+}
