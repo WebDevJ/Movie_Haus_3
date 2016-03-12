@@ -3,7 +3,7 @@ const React         = require('react');
 const ReactDOM      = require('react-dom');
 const $             = require('jquery');
 
-const CurrentMovies = React.createClass({
+const MovieList = React.createClass({
   render: function(){
     return(
       <div>
@@ -15,4 +15,4 @@ const CurrentMovies = React.createClass({
   }
 })
 
-module.exports = CurrentMovies;
+module.exports = MovieList;
