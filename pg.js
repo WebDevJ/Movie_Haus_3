@@ -2,14 +2,15 @@
 
 require('dotenv').config();
 
-const pgp = require('pg-promise')({
+var pgp = require('pg-promise')({
     // Initialization Options
 });
 
 // connection path
-const cn = process.env.DATABASE_URL;
+// DATABASE_URL in .env file: DATABASE_URL=postgres://USERNAME:PASSWORD@localhost/DBNAME
+var cn = process.env.DATABASE_URL;
 
-const db = pgp(cn);
+var db = pgp(cn);
 
 // show all movies in the db
 function showMovies(req, res, next) {
