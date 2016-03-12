@@ -5,7 +5,7 @@ const $            = require('jquery');
 const Showtimes    = require('./components/showtimes.js');
 const MovieDetails = require('./components/moviedetails.js');
 const Search       = require('./components/search.js');
-const Results       = require('./components/results.js');
+const Results      = require('./components/results.js');
 
 const App = React.createClass({
   getInitialState: function(){
