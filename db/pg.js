@@ -28,5 +28,54 @@ function showMovies(req, res, next) {
   })
 }
 
+function showOneMovie(req, res, next) {
+  db.any(`SELECT m.*, array_agg(s.showtime)
+  FROM movies as m
+  LEFT JOIN showtimes as s
+  ON m.movie_id = s.movie_id
+  WHERE m.movie_id=$1
+  GROUP BY m.movie_id;`, [req.params.movie_id])
+  .then(function(data) {
+    res.rows = data;
+    next();
+  })
+  .catch(function(error){
+    console.error(error);
+  })
+}
+
+// add a new movie
+function addMovie(req, res, next) {
+  db.none(`INSERT INTO movies (imdbID, poster, title, year, rated, director, actors, plot)
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8)`,
+    [req.body.imdbID, req.body.Poster, req.body.Title, req.body.Year, req.body.Rated, req.body.Director, req.body.Actors, req.body.Plot])
+    .then(function (data) {
+      res.rows = data;
+      next();
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+
+// remove a movie
+function deleteMovie(req, res, next) {
+  db.none(`DELETE FROM showtimes
+  WHERE movie_id=$1;`),
+  [req.params.movie_id])
+    .then(function(data) {
+      res.rows = data;
+      next();
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+
+
+
 // export it
 module.exports.showMovies = showMovies;
+module.exports.addMovie = addMovie;
+module.exports.showOneMovie = showOneMovie;
+module.exports.deleteMovie = deleteMovie;

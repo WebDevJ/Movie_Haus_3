@@ -4,15 +4,8 @@ const db      = require('../db/pg');
 const omdb    = 'http://www.omdbapi.com/?';
 const request = require('request');
 
-movies.route('/')
-  .get((req, res) => {
-    res.send(res.rows)
-  })
-  .post((req, res) => {
-  })
-
 movies.route('/:movie_id')
-  .get((req, res) => {
+  .get(db.showOneMovie, (req, res) => {
     res.send(res.rows)
   })
 
@@ -20,7 +13,7 @@ movies.route('/:movie_id')
     res.send(res.rows)
   })
 
-  .delete((req, res) => {
+  .delete(db.deleteMovie, (req, res) => {
     res.send(res.rows)
   })
 
@@ -31,5 +24,13 @@ movies.route('/search/:t')
         res.send(body)
     });
   })
+
+movies.route('/')
+  .get(db.showMovies, (req, res) => {
+    res.send(res.rows)
+  })
+  .post(db.addMovie, (req, res) => {
+  })
+
 
 module.exports = movies;
