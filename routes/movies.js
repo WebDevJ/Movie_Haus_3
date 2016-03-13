@@ -30,6 +30,7 @@ movies.route('/')
     res.send(res.rows)
   })
   .post(db.addMovie, (req, res) => {
+    res.send(res.rows)
   })
 
 
